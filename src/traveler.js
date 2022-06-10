@@ -1,8 +1,8 @@
 class Traveler {
-  constructor() {
-    this.id = userData.id;
-    this.name = userData.name;
-    this.travelerType = userData.travelerType;
+  constructor(travelerData) {
+    this.id = travelerData.id;
+    this.name = travelerData.name;
+    this.travelerType = travelerData.travelerType;
   }
 
   returnFirstName = () => {
@@ -11,5 +11,4 @@ class Traveler {
   };
 }
 
-export default User;
-\;
+export { Traveler };
