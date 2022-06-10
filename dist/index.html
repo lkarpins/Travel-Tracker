@@ -14,9 +14,58 @@
   <body>
     <main>
       <header class="main nav--bar">
-        <h1 class="main__menu-text">Travel Tracker</h1>
-        <h2 id="welcomeMessage"></h2>
-        <button class="main__button">>Login</button>
+        <h1 class="main__menu-text">travel tracker</h1>
+        <h2 id="welcomeMessage">welcome back, [user]!</h2>
+        <section>
+          <h2 class="booking-heading">where to next?</h2>
+        </section>
+        <section class="book-trip hidden" id="bookTripBar">
+          <input
+            placeholder="desination"
+            list="browsers"
+            name="dBrowser"
+            class="destination-dropdown"
+            id="browser"
+          />
+          <datalist id="browsers"> </datalist>
+          <input placeholder="start date" class='form-control start-date'
+          type='text' onfocus='(this.type='date')'
+          onblur='(this.type='text')'id='startDate'>
+          <input
+            type="number"
+            name="days"
+            min="1"
+            value=""
+            placeholder="days"
+            class="days"
+            id="numDays"
+          />
+          <input
+            type="number"
+            name="guests"
+            min="1"
+            value=""
+            placeholder="guests"
+            class="guests"
+            id="guests"
+          />
+          <button
+            type="submit"
+            name="button"
+            class="estimate-button button"
+            id="estimateButton"
+          >
+            get estimate.
+          </button>
+          <button
+            type="submit"
+            name="button"
+            class="book-button button"
+            id="bookButton"
+          >
+            book it.
+          </button>
+        </section>
       </header>
     </main>
     <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
