@@ -1,4 +1,4 @@
-import { Traveler } from "../src/Traveler";
+import { Traveler } from "../src/traveler";
 
 class TravelerRepo {
   constructor(travelerData) {
@@ -6,9 +6,10 @@ class TravelerRepo {
   }
 
   findTraveler = id => {
-    const chosenTraveler = this.data.find(traveler => traveler.id === id);
-    const currentTraveler = new Traveler(chosenTraveler);
-    return currentTraveler;
+    const chosenTraveler = this.data.find(traveler => {
+      return traveler.id === id;
+    });
+    return chosenTraveler;
   };
 }
 
