@@ -30,3 +30,5 @@ const destinations = [
     alt: "city with boats on the water during the day time"
   }
 ];
+
+export { destinations };
