@@ -1,4 +1,4 @@
-const Traveler = require("./traveler");
+import { Traveler } from "../src/Traveler";
 
 class TravelerRepo {
   constructor(travelerData) {
