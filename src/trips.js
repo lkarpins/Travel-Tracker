@@ -11,6 +11,13 @@ class Trip {
     this.destination = destinationData;
   }
 
-  calculateSingleTrip = () => {};
+  calculateSingleTrip = () => {
+    const tripTotal =
+      this.destination.estimatedFlightCostPerPerson * this.travelers +
+      this.destination.estimatedLodgingCostPerDay *
+        this.duration *
+        this.travelers;
+    return tripTotal;
+  };
 }
 export { Trip };

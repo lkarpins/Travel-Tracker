@@ -100,4 +100,9 @@ describe("Trip", () => {
       "city with boats on the water during the day time"
     );
   });
+
+  it("should calculate cost of single trip", () => {
+    expect(trip1.calculateSingleTrip()).to.equal(5850);
+    expect(trip2.calculateSingleTrip()).to.equal(2580);
+  });
 });
