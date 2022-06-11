@@ -16,27 +16,27 @@ describe("Traveler", () => {
     expect(Traveler).to.be.a("function");
   });
 
-  it("should be able to instantiate multiple travelers", () => {
+  it("should be able to instantiate traveler", () => {
     expect(traveler1).to.be.an.instanceof(Traveler);
     expect(traveler2).to.be.an.instanceOf(Traveler);
   });
 
-  it("should be able to store a traveler's id for multiple travelers", () => {
+  it("should be able to store a traveler's id", () => {
     expect(traveler1.id).to.equal(1);
     expect(traveler2.id).to.equal(2);
   });
 
-  it("should be able to store a traveler's name for multiple travelers", () => {
+  it("should be able to store a traveler's name", () => {
     expect(traveler1.name).to.equal("Ham Leadbeater");
     expect(traveler2.name).to.equal("Rachael Vaughten");
   });
 
-  it("should be able to store a traveler's type for multiple travelers", () => {
+  it("should be able to store a traveler's type", () => {
     expect(traveler1.travelerType).to.equal("relaxer");
     expect(traveler2.travelerType).to.equal("thrill-seeker");
   });
 
-  it("should be able to return only the first name for multiple travelers", () => {
+  it("should be able to return only the first name of traveler", () => {
     const firstName1 = traveler1.returnFirstName();
     const firstName2 = traveler2.returnFirstName();
     expect(firstName1).to.equal("Ham");

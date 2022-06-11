@@ -7,7 +7,6 @@ class Traveler {
     this.presentTrips = [];
     this.upcomingTrips = [];
     this.pendingtrips = [];
-    this.tripsTotalCost = null;
   }
 
   returnFirstName = () => {

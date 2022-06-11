@@ -1,3 +1,10 @@
 const dayjs = require("dayjs");
-import { trips } from "../src/data/sample-trip-data";
-import { destinations } from "../src/data/sample-destination-data";
+import { Trip } from "../src/trip";
+
+class TripRepo {
+  constructor(tripData) {
+    this.trips = tripData;
+  }
+}
+
+export { TripRepo };
