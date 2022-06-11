@@ -1,5 +1,15 @@
-class Trips {
-  constructor() {}
+class Trip {
+  constructor(tripData) {
+    this.id = tripData.id;
+    this.userID = tripData.id;
+    this.destinationID = tripData.destinationID;
+    this.travelers = tripData.travelers;
+    this.date = tripData.date;
+    this.duration = tripData.duration;
+    this.status = tripData.status;
+    this.data = tripData.suggestedActivities;
+    this.cost = null;
+  }
 }
 
-export default User;
+export { Trip };
