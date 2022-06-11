@@ -15,31 +15,45 @@
     <main>
       <header class="main nav--bar">
         <h1 class="main__menu-text">travel tracker</h1>
+        <button class="main__button">logout</button>
         <h2 id="welcomeMessage">welcome back, [user]!</h2>
         <section>
           <h2 class="booking-heading">where to next?</h2>
         </section>
         <section class="book-trip hidden" id="bookTripBar">
+          <label class="destinations input" id="destinations"
+            >destinations:</label
+          ><br />
           <input
-            placeholder="desination"
-            list="browsers"
-            name="dBrowser"
-            class="destination-dropdown"
-            id="browser"
-          />
-          <datalist id="browsers"> </datalist>
-          <input placeholder="start date" class='form-control start-date'
-          type='text' onfocus='(this.type='date')'
-          onblur='(this.type='text')'id='startDate'>
+            autocomplete="on"
+            list="datalist"
+            class="desintations-dropdown input"
+            id="desintationsDropDown"
+            name="destinations"
+            placeholder="destination"
+            required
+          /><br /><br />
+          <label class="booking-date input" id="bookingDate">start date:</label>
+          <input
+            class="booking-date-input input"
+            id="bookingDateInput"
+            type="date"
+            placeholder="dd/mm/yyyy"
+            min=""
+            max=""
+            required
+          /><br />
+          <label class="duration input" id="duration">duration:</label><br />
           <input
             type="number"
             name="days"
             min="1"
             value=""
-            placeholder="days"
-            class="days"
-            id="numDays"
+            placeholder="duration"
+            class="duration-input input"
+            id="duration"
           />
+          <label class="guests input" id="guests">guests:</label><br />
           <input
             type="number"
             name="guests"
