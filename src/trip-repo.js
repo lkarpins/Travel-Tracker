@@ -24,7 +24,7 @@ class TripRepo {
     const filteredTrips = this.data.filter(trip => {
       return trip.userID === id;
     });
-    return filteredTrips;
+    return trip.allUserTrips.push(filteredTrips);
   };
 
   calculateSingleTrip = destinationData => {

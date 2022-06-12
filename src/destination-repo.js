@@ -20,7 +20,3 @@ class DestinationRepo {
   };
 }
 export { DestinationRepo };
-
-// traveler0
-// trips 1
-// destinations2

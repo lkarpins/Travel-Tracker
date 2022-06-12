@@ -9,17 +9,17 @@ describe("TravelerRepo", () => {
   let traveler2;
   let travelerRepo;
   beforeEach(() => {
-    traveler1 = new Traveler({
+    traveler1 = {
       id: 1,
       name: "Ham Leadbeater",
       travelerType: "relaxer"
-    });
+    };
 
-    traveler2 = new Traveler({
+    traveler2 = {
       id: 2,
       name: "Rachael Vaughten",
       travelerType: "thrill-seeker"
-    });
+    };
     travelerRepo = new TravelerRepo([traveler1, traveler2]);
   });
 
