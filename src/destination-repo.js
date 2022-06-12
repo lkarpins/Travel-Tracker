@@ -5,6 +5,12 @@ class DesinationRepo {
     this.data = data;
   }
 
+  instantiateDestination = data => {
+    const instantiatedDestination = (this.data = data.map(destination => {
+      return new Destination(destination);
+    });
+    return instantiatedDestination;
+  };
   findDestination = id => {
     const chosenDestination = this.data.find(destination => {
       return destination.id === id;

@@ -6,11 +6,11 @@ class TripRepo {
     this.data = data;
   }
 
-  creatTrips = () => {
-    const createdTrips = this.data.map(trip => {
-      return (newTrip = new Trip(data));
+  instantiateTrips = data => {
+    const instantiatedTrips = (this.data = data.map(trip => {
+      return new Trip(trip);
     });
-    return createTrips;
+    return instantiatedTrips;
   };
 
   findTrip = id => {

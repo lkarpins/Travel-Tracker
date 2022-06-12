@@ -32,7 +32,8 @@ describe("TravelerRepo", () => {
   });
 
   it("should be able to find traveler by id", () => {
-    let chosenTraveler = travelerRepo.findTraveler(traveler2.id);
-    expect(chosenTraveler).to.deep.equal(traveler2);
+    const chosenTraveler1 = travelerRepo.findTraveler(traveler1.id);
+    expect(chosenTraveler1).to.be.an.instanceof(Traveler);
+    expect(chosenTraveler1.id).to.equal(traveler1.id);
   });
 });
