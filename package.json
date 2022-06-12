@@ -31,5 +31,7 @@
   },
   "dependencies": {
     "dayjs": "^1.11.3"
+    "css": "^3.0.0",
+    "normalize": "^0.3.1"
   }
 }
