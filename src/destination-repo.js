@@ -2,11 +2,11 @@ import { Destination } from "../src/destination";
 
 class DesinationRepo {
   constructor(data) {
-    this.data = this.instantiateDestination(data);
+    this.data = data;
   }
 
   instantiateDestination = data => {
-    const instantiatedDestination = data.map(destination => {
+    const instantiatedDestination = (this.data = data.map(destination => {
       return new Destination(destination);
     });
     return instantiatedDestination;

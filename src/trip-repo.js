@@ -3,11 +3,11 @@ import { Trip } from "../src/trip";
 
 class TripRepo {
   constructor(data) {
-    this.data = this.instantiateTrips(data);
+    this.data = data;
   }
 
   instantiateTrips = data => {
-    const instantiatedTrips = data.map(trip => {
+    const instantiatedTrips = (this.data = data.map(trip => {
       return new Trip(trip);
     });
     return instantiatedTrips;
