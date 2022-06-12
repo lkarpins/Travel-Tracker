@@ -1,16 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
-</head>
-<body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
-  <script src="bundle.js"></script>
-
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Mukta&display=swap"
+      rel="stylesheet"
+    />
+    <title>Travel Tracker</title>
+  </head>
+  <body>
+    <main>
+      <header class="main nav--bar">
+        <h1 class="main__menu-text">travel tracker</h1>
+        <button class="main__button">logout</button>
+        <h2 id="welcomeMessage">welcome back, [user]!</h2>
+        <section>
+          <h2 class="booking-heading">where to next?</h2>
+        </section>
+        <section class="book-trip hidden" id="bookTripBar">
+          <label class="destinations input" id="destinations"
+            >destinations:</label
+          >
+          <input
+            autocomplete="on"
+            list="datalist"
+            class="desintations-dropdown input"
+            id="desintationsDropDown"
+            name="destination"
+            placeholder="destination"
+            required
+          />
+          <label class="booking-date input" id="bookingDate">start date:</label>
+          <input
+            class="booking-date-input input"
+            id="bookingDateInput"
+            type="date"
+            placeholder="dd/mm/yyyy"
+            min=""
+            max=""
+            required
+          />
+          <label class="duration input" id="duration">duration:</label>
+          <input
+            type="number"
+            name="days"
+            min="1"
+            value=""
+            placeholder="duration"
+            class="duration-input input"
+            id="duration"
+          />
+          <label class="guests input" id="guests">guests:</label>
+          <input
+            type="number"
+            name="guests"
+            min="1"
+            value=""
+            placeholder="guests"
+            class="guests"
+            id="guests"
+          />
+          <button
+            type="submit"
+            name="button"
+            class="estimate-button button"
+            id="estimateButton"
+          >
+            get estimate.
+          </button>
+          <button
+            type="submit"
+            name="button"
+            class="book-button button"
+            id="bookButton"
+          >
+            book it.
+          </button>
+        </section>
+      </header>
+    </main>
+    <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
+    <script src="bundle.js"></script>
+  </body>
 </html>
