@@ -17,7 +17,7 @@ describe("Trip", () => {
     expect(Trip).to.be.a("function");
   });
 
-  it("should be able to instantiate multiple trips", () => {
+  it("should be able to instantiatea a trip", () => {
     expect(trip1).to.be.an.instanceof(Trip);
     expect(trip2).to.be.an.instanceOf(Trip);
   });
@@ -61,3 +61,4 @@ describe("Trip", () => {
     expect(trip1.suggestedActivities).to.deep.equal([]);
     expect(trip2.suggestedActivities).to.deep.equal([]);
   });
+});

@@ -1,8 +1,8 @@
-import Destination from "./Destination";
+import { Destination } from "../src/destination";
 
 class DesinationRepository {
   constructor(data) {
-    this.data = this.mapDestination(data);
+    this.data = destinationData;
   }
 }
 
