@@ -8,6 +8,11 @@ class Trip {
     this.duration = tripData.duration;
     this.status = tripData.status;
     this.suggestedActivities = tripData.suggestedActivities;
+    this.allUserTrips = [];
+    this.pastTrips = [];
+    this.presentTrips = [];
+    this.upcomingTrips = [];
+    this.pendingtrips = [];
   }
 }
 export { Trip };

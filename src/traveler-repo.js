@@ -1,8 +1,9 @@
 import { Traveler } from "../src/traveler";
 
 class TravelerRepo {
-  constructor(travelerData) {
-    this.data = travelerData;
+  constructor(data) {
+    this.data = data;
+    this.travelerList = [];
   }
 
   findTraveler = id => {
