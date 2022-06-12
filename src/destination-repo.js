@@ -1,16 +1,17 @@
 import { Destination } from "../src/destination";
 
-class DesinationRepo {
+class DestinationRepo {
   constructor(data) {
-    this.data = data;
+    this.data = this.instantiateDestination(data);
   }
 
   instantiateDestination = data => {
-    const instantiatedDestination = (this.data = data.map(destination => {
+    const instantiatedDestination = data.map(destination => {
       return new Destination(destination);
     });
     return instantiatedDestination;
   };
+
   findDestination = id => {
     const chosenDestination = this.data.find(destination => {
       return destination.id === id;
@@ -18,7 +19,7 @@ class DesinationRepo {
     return chosenDestination;
   };
 }
-export { DesinationRepo };
+export { DestinationRepo };
 
 // traveler0
 // trips 1

@@ -1,13 +1,13 @@
 const dayjs = require("dayjs");
-import { Trip } from "../src/trip";
+import { Trip } from "../src/trips";
 
 class TripRepo {
   constructor(data) {
-    this.data = data;
+    this.data = this.instantiateTrips(data);
   }
 
   instantiateTrips = data => {
-    const instantiatedTrips = (this.data = data.map(trip => {
+    const instantiatedTrips = data.map(trip => {
       return new Trip(trip);
     });
     return instantiatedTrips;
