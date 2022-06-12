@@ -8,11 +8,13 @@ class Trip {
     this.duration = tripData.duration;
     this.status = tripData.status;
     this.suggestedActivities = tripData.suggestedActivities;
-    this.allUserTrips = [];
-    this.pastTrips = [];
-    this.presentTrips = [];
-    this.upcomingTrips = [];
-    this.pendingtrips = [];
   }
+
+  calculateSingleTrip = destinationId => {
+    const tripTotal =
+      destination.estimatedFlightCostPerPerson * this.travelers +
+      destination.estimatedLodgingCostPerDay * this.duration;
+    return tripTotal * 1.1;
+  };
 }
 export { Trip };

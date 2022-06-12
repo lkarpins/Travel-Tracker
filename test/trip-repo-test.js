@@ -41,8 +41,8 @@ describe("TripRepo", () => {
     expect(tripRepo).to.be.an.instanceof(TripRepo);
   });
 
-  it("should be able to instantiate new Trip", () => {
-    const chosenTraveler1 = tripRepo.instantiateTrips(trip);
-    expect(chosenTraveler1).to.be.an.instanceof(Trip);
-  });
+  // it("should be able to instantiate new Trip", () => {
+  //   const chosenTraveler1 = tripRepo.instantiateTrips(trip);
+  //   expect(chosenTraveler1).to.be.an.instanceof(Trip);
+  // });
 });

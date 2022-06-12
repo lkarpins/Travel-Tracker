@@ -12,7 +12,7 @@ class TravelerRepo {
     return instantiatedTraveler;
   };
 
-  findTraveler = id => {
+  findCurrentTraveler = id => {
     return this.data.find(traveler => {
       return traveler.id === id;
     });
