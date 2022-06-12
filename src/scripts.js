@@ -5,7 +5,6 @@
 import "./css/styles.css";
 import dayjs from "dayjs";
 import { fetchApiData, fetchData } from "./apiCalls";
-import { Traveler } from "./traveler";
 import { TravelerRepo } from "./traveler-repo";
 import { Trip } from "./trips";
 //Global Variables

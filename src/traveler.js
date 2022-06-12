@@ -3,6 +3,7 @@ class Traveler {
     this.id = travelerData.id;
     this.name = travelerData.name;
     this.travelerType = travelerData.travelerType;
+    this.allTrips = [];
     this.pastTrips = [];
     this.presentTrips = [];
     this.upcomingTrips = [];
@@ -13,6 +14,8 @@ class Traveler {
     const firstName = this.name.split(" ");
     return firstName[0];
   };
+
+  returnAllTrips;
 }
 
 export { Traveler };

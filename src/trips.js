@@ -1,5 +1,5 @@
 class Trip {
-  constructor(tripData, destinationData) {
+  constructor(tripData) {
     this.id = tripData.id;
     this.userID = tripData.userID;
     this.destinationID = tripData.destinationID;
@@ -8,13 +8,13 @@ class Trip {
     this.duration = tripData.duration;
     this.status = tripData.status;
     this.suggestedActivities = tripData.suggestedActivities;
-    this.destination = destinationData;
+    // this.destination = destinationData;
   }
 
-  calculateSingleTrip = () => {
+  calculateSingleTrip = destinationData => {
     const tripTotal =
-      this.destination.estimatedFlightCostPerPerson * this.travelers +
-      this.destination.estimatedLodgingCostPerDay *
+      destinationData.estimatedFlightCostPerPerson * this.travelers +
+      destinationData.estimatedLodgingCostPerDay *
         this.duration *
         this.travelers;
     return tripTotal;
