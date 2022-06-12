@@ -14,8 +14,6 @@ class Traveler {
     const firstName = this.name.split(" ");
     return firstName[0];
   };
-
-  returnAllTrips;
 }
 
 export { Traveler };

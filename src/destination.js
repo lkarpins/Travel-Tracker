@@ -1,13 +1,13 @@
 class Destination {
-  constructor(data) {}
-
-  calculateSingleTrip = destinationData => {
-    const tripTotal =
-      destinationData.estimatedFlightCostPerPerson * this.travelers +
-      destinationData.estimatedLodgingCostPerDay *
-        this.duration *
-        this.travelers;
-    return tripTotal;
-  };
+  constructor(destinationData) {
+    this.id = destinationData.id;
+    this.destination = destinationData.destination;
+    this.estimatedLodgingCostPerDay =
+      destinationData.estimatedLodgingCostPerDay;
+    this.estimatedFlightCostPerPerson =
+      destinationData.estimatedFlightCostPerPerson;
+    this.image = destinationData.image;
+    this.alt = destinationData.alt;
+  }
 }
-export { Trip };
+export { Destination };

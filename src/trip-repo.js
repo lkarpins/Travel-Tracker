@@ -5,6 +5,15 @@ class TripRepo {
   constructor(tripData) {
     this.trips = tripData;
   }
+
+  calculateSingleTrip = destinationData => {
+    const tripTotal =
+      destinationData.estimatedFlightCostPerPerson * this.travelers +
+      destinationData.estimatedLodgingCostPerDay *
+        this.duration *
+        this.travelers;
+    return tripTotal;
+  };
 }
 
 export { TripRepo };
