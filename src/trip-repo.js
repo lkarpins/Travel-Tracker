@@ -3,14 +3,14 @@ import { Trip } from "../src/trip";
 
 class TripRepo {
   constructor(data) {
-    this.data = data;
+    this.data = this.instantiateTrips(data);
   }
 
-  creatTrips = () => {
-    const createdTrips = this.data.map(trip => {
-      return (newTrip = new Trip(data));
+  instantiateTrips = data => {
+    const instantiatedTrips = data.map(trip => {
+      return new Trip(trip);
     });
-    return createTrips;
+    return instantiatedTrips;
   };
 
   findTrip = id => {

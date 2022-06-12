@@ -30,7 +30,7 @@
     "lint": "./node_modules/.bin/eslint 'src/**.js' 'test/**.js'"
   },
   "dependencies": {
-    "dayjs": "^1.11.3"
+    "dayjs": "^1.11.3",
     "css": "^3.0.0",
     "normalize": "^0.3.1"
   }
