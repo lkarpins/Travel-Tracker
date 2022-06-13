@@ -1,5 +1,5 @@
-const dayjs = require("dayjs");
 import { Trip } from "../src/trips";
+const dayjs = require("dayjs");
 
 class TripRepo {
   constructor(data) {
@@ -30,5 +30,12 @@ class TripRepo {
         return dayjs(b.date) - dayjs(a.date);
       }));
   };
+
+  // calculateAmountSpentAnually = id => {
+  //   console.log(this.tripList);
+  //   // const result = tripList.reduce((acc, trip) => {
+  //   //   if (trip.date >=  )
+  //   // })
+  // };
 }
 export default TripRepo;

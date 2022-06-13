@@ -30,9 +30,8 @@ const fetchApiCalls = userID => {
     travelerRepo = new TravelerRepo(travelerData);
     tripRepo = new TripRepo(tripData);
     destinationRepo = new DestinationRepo(destinationData);
-    currentTraveler = travelerRepo.findCurrentTraveler(44);
+    currentTraveler = travelerRepo.findCurrentTraveler(37);
     tripRepo.filterTripsByTraveler(currentTraveler.id);
-    console.log(tripRepo);
     loadPage();
   });
 };
@@ -47,19 +46,11 @@ const loadPage = () => {
   displayTripCards();
 };
 
-//function that will sort allUsers trips, first need to go to tripRepo and call that method we have allCurrentUserTrips = filterTripsByTraveler(traveler.id);; will give us new array with trip objects whose userID === passed in traveler.id
-//iterate over that array and sort into respective arrays with if statements;
-// if trip.date < today, traveler.pastTrips.push(trip)
-// if trip.date === push.currentTrips(trip)
-// if trip.date > today, traveler.currentTrips.push(trip)
-//if trip.status === 'pending' push that in pendingTrips array past,
-
 const welcomeTraveler = () => {
   welcomeMessage.innerHTML = `welcome back, ${currentTraveler.returnFirstName()}!`;
 };
 
 const insertDestinationOptions = () => {
-  console.log(destinationRepo);
   destinationRepo.data.forEach(destination => {
     destinationsDropDown.innerHTML += `<option value="${destination.destinationID}">${destination.destination}</option>`;
   });
@@ -70,7 +61,7 @@ const displayTripCards = () => {
   tripRepo.tripList.forEach(trip => {
     const destination = destinationRepo.findDestination(trip.destinationID);
     trip.calculateSingleTrip(destination);
-    trip.getTripCategory(trip);
+    trip.getTripTimeline(trip);
 
     tripCards.appendChild(createTripCard(trip, destination));
   });
@@ -88,7 +79,7 @@ const createTripCard = (trip, destination) => {
     alt=${destination.alt}
   />
   <header class="trip-header">
-    <p class='category ${trip.category}-category'>${trip.category}</p>
+    <p class='category ${trip.timeline}-category'>${trip.timeline}</p>
     <h3>${destination.destination}</h3>
     <h4>${dayjs(trip.date).format("MM/DD/YYYY")}</h4>
   </header>

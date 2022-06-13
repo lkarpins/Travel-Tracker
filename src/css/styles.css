@@ -26,6 +26,7 @@ h2 {
 .book-trip {
   background: rgba(255, 255, 255, 0.6);
   padding: 2rem;
+  border-radius: 23rem;
 }
 
 .trip-cards {

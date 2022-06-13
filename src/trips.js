@@ -11,7 +11,7 @@ class Trip {
     this.status = tripData.status;
     this.suggestedActivities = tripData.suggestedActivities;
     this.cost = 0;
-    this.category = "";
+    this.timeline = "";
   }
 
   calculateSingleTrip = destination => {
@@ -22,15 +22,15 @@ class Trip {
     this.cost = tripTotal;
   };
 
-  getTripCategory = trip => {
+  getTripTimeline = trip => {
     if (dayjs().isAfter(dayjs(this.date))) {
-      return (this.category = "past");
-    } else if (dayjs().isSame(dayjs(trip.date))) {
-      return (this.category = "present");
-    } else if (dayjs().isBefore(dayjs(trip.date))) {
-      return (this.category = "upcoming");
+      return (this.timeline = "past");
+    } else if (dayjs().isSame(dayjs(this.date))) {
+      return (this.timeline = "present");
+    } else if (dayjs().isBefore(dayjs(this.date))) {
+      return (this.timeline = "upcoming");
     } else if (this.status === "pending") {
-      return (this.category = "pending");
+      return (this.timeline = "pending");
     }
   };
 }

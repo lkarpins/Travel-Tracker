@@ -32,7 +32,7 @@ describe("TravelerRepo", () => {
   });
 
   it("should be able to find traveler by id", () => {
-    const chosenTraveler1 = travelerRepo.findTraveler(traveler1.id);
+    const chosenTraveler1 = travelerRepo.findCurrentTraveler(traveler1.id);
     expect(chosenTraveler1).to.be.an.instanceof(Traveler);
     expect(chosenTraveler1.id).to.equal(traveler1.id);
   });
