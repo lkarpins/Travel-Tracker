@@ -4,6 +4,7 @@ import { Trip } from "../src/trips";
 class TripRepo {
   constructor(data) {
     this.data = this.instantiateTrips(data);
+    this.tripList = [];
   }
 
   instantiateTrips = data => {
@@ -21,11 +22,13 @@ class TripRepo {
   };
 
   filterTripsByTraveler = id => {
-    const filteredTrips = this.data.filter(trip => {
-      return trip.userID === id;
-    });
-    return filteredTrips;
+    return (this.tripList = this.data
+      .filter(trip => {
+        return trip.userID === id;
+      })
+      .sort((a, b) => {
+        return dayjs(b.date) - dayjs(a.date);
+      }));
   };
 }
-
-export { TripRepo };
+export default TripRepo;

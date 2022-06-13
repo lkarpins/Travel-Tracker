@@ -14,73 +14,79 @@
   <body>
     <main>
       <header class="main nav--bar">
-        <h1 class="main__menu-text">travel tracker</h1>
-        <button class="main__button">logout</button>
+        <nav>
+          <h1 class="main__menu-text">travel tracker</h1>
+          <button class="main__button">logout</button>
+        </nav>
         <h2 id="welcomeMessage"></h2>
-        <section>
-          <h2 class="booking-heading">where to next?</h2>
-        </section>
+        <h2 id="budgetUpdate"></h2>
+        <h2 class="booking-heading">where to next?</h2>
         <section class="book-trip hidden" id="bookTripBar">
-          <label class="destinations input" id="destinations"
-            >destinations:</label
-          >
-          <input
-            autocomplete="on"
-            list="datalist"
-            class="desintations-dropdown input"
-            id="desintationsDropDown"
-            name="destination"
-            placeholder="destination"
-            required
-          />
-          <label class="booking-date input" id="bookingDate">start date:</label>
-          <input
-            class="booking-date-input input"
-            id="bookingDateInput"
-            type="date"
-            placeholder="dd/mm/yyyy"
-            min=""
-            max=""
-            required
-          />
-          <label class="duration input" id="duration">duration:</label>
-          <input
-            type="number"
-            name="days"
-            min="1"
-            value=""
-            placeholder="duration"
-            class="duration-input input"
-            id="duration"
-          />
-          <label class="guests input" id="guests">guests:</label>
-          <input
-            type="number"
-            name="guests"
-            min="1"
-            value=""
-            placeholder="guests"
-            class="guests"
-            id="guests"
-          />
-          <button
-            type="submit"
-            name="button"
-            class="estimate-button button"
-            id="estimateButton"
-          >
-            get estimate.
-          </button>
-          <button
-            type="submit"
-            name="button"
-            class="book-button button"
-            id="bookButton"
-          >
-            book it.
-          </button>
+          <form>
+            <label class="destinations input" id="destinations"
+              >destinations:</label
+            >
+            <select
+              autocomplete="on"
+              class="destinations-dropdown input"
+              id="destinationsDropDown"
+              name="destination"
+              placeholder="destination"
+              required
+            >
+            </select>
+            <label class="booking-date input" id="bookingDate"
+              >start date:</label
+            >
+            <input
+              class="booking-date-input input"
+              id="bookingDateInput"
+              type="date"
+              placeholder="dd/mm/yyyy"
+              min=""
+              max=""
+              required
+            />
+            <label class="duration input" id="duration">duration:</label>
+            <input
+              type="number"
+              name="days"
+              min="1"
+              value=""
+              placeholder="duration"
+              class="duration-input input"
+              id="duration"
+            />
+            <label class="guests input" id="guests">guests:</label>
+            <input
+              type="number"
+              name="guests"
+              min="1"
+              value=""
+              placeholder="guests"
+              class="guests"
+              id="guests"
+            />
+            <button
+              type="submit"
+              name="button"
+              class="estimate-button button"
+              id="estimateButton"
+            >
+              get estimate.
+            </button>
+            <button
+              type="submit"
+              name="button"
+              class="book-button button"
+              id="bookButton"
+            >
+              book it.
+            </button>
+          </form>
         </section>
       </header>
+      <section class="trip-cards"></section>
     </main>
     <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
     <script src="bundle.js"></script>

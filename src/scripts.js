@@ -2,14 +2,17 @@
 import "normalize.css";
 import "./css/styles.css";
 import { TravelerRepo } from "./traveler-repo";
-import { TripRepo } from "./trip-repo";
-import { DestinationRepo } from "./destination-repo";
+import TripRepo from "./trip-repo";
+import DestinationRepo from "./destination-repo";
 import { Traveler } from "../src/traveler";
 import { fetchData } from "./apiCalls";
 const dayjs = require("dayjs");
 
 //Query Selectors
 const welcomeMessage = document.querySelector("#welcomeMessage");
+const budgetUpdate = document.querySelector("#budgetUpdate");
+const destinationsDropDown = document.querySelector("#destinationsDropDown");
+const tripCards = document.querySelector(".trip-cards");
 
 //Global Variables
 let today = dayjs().format("YYYY/MM/DD");
@@ -27,16 +30,22 @@ const fetchApiCalls = userID => {
     travelerRepo = new TravelerRepo(travelerData);
     tripRepo = new TripRepo(tripData);
     destinationRepo = new DestinationRepo(destinationData);
-
-    travelerRepo.instantiateTraveler(travelerData);
-    currentTraveler = travelerRepo.findCurrentTraveler(1);
-    welcomeTraveler();
+    currentTraveler = travelerRepo.findCurrentTraveler(44);
+    tripRepo.filterTripsByTraveler(currentTraveler.id);
+    console.log(tripRepo);
+    loadPage();
   });
 };
-//
-// const loadPage = () => {
-//   welcomeTraveler();
+
+// const sortTrips = () => {
+//   tripRepo.filterTripsByTraveler(id);
 // };
+
+const loadPage = () => {
+  welcomeTraveler();
+  insertDestinationOptions();
+  displayTripCards();
+};
 
 //function that will sort allUsers trips, first need to go to tripRepo and call that method we have allCurrentUserTrips = filterTripsByTraveler(traveler.id);; will give us new array with trip objects whose userID === passed in traveler.id
 //iterate over that array and sort into respective arrays with if statements;
@@ -49,6 +58,62 @@ const welcomeTraveler = () => {
   welcomeMessage.innerHTML = `welcome back, ${currentTraveler.returnFirstName()}!`;
 };
 
+const insertDestinationOptions = () => {
+  console.log(destinationRepo);
+  destinationRepo.data.forEach(destination => {
+    destinationsDropDown.innerHTML += `<option value="${destination.destinationID}">${destination.destination}</option>`;
+  });
+  return;
+};
+
+const displayTripCards = () => {
+  tripRepo.tripList.forEach(trip => {
+    const destination = destinationRepo.findDestination(trip.destinationID);
+    trip.calculateSingleTrip(destination);
+    trip.getTripCategory(trip);
+
+    tripCards.appendChild(createTripCard(trip, destination));
+  });
+};
+
+const createTripCard = (trip, destination) => {
+  let currentTripCard = document.createElement("article");
+  currentTripCard.setAttribute("id", trip.id);
+  currentTripCard.setAttribute("class", "trip-card");
+  currentTripCard.setAttribute("tabIndex", 0);
+
+  currentTripCard.innerHTML = `
+  <img
+    src=${destination.image}
+    alt=${destination.alt}
+  />
+  <header class="trip-header">
+    <p class='category ${trip.category}-category'>${trip.category}</p>
+    <h3>${destination.destination}</h3>
+    <h4>${dayjs(trip.date).format("MM/DD/YYYY")}</h4>
+  </header>
+  <div class="content">
+    <span class="stat">
+      <p class="detail">${trip.travelers}</p>
+      <p>Travelers</p>
+    </span>
+    <span class="stat">
+      <p class="detail">${trip.duration}</p>
+      <p>Nights</p>
+    </span>
+  </div>
+  <footer>
+    <p>Trip Cost</p>
+    <p class="detail">$${trip.cost.toFixed(2)}</p>
+  </footer>
+  `;
+
+  return currentTripCard;
+};
+
+// const notifyBudget = () {
+//   budgetUpdate.innerHTML = `you've spent, ${}`
+// }
 //iterate through all of the current users trips; while iterating, go to destination repo.findDestination(trip.desinationID) = to variable.   const totalCost = destination.estimatedFlightCostPerPerson
 //declare a variable, currentDestination; call destination.findDestination--pass in trip.destinationID
 
