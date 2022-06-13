@@ -23,14 +23,13 @@ let currentTraveler;
 
 const fetchApiCalls = userID => {
   fetchData().then(data => {
-    // console.log(data);
     let travelerData = data[0].travelers;
     let tripData = data[1].trips;
     let destinationData = data[2].destinations;
     travelerRepo = new TravelerRepo(travelerData);
     tripRepo = new TripRepo(tripData);
     destinationRepo = new DestinationRepo(destinationData);
-    currentTraveler = travelerRepo.findCurrentTraveler(44);
+    currentTraveler = travelerRepo.findCurrentTraveler(2);
     tripRepo.filterTripsByTraveler(currentTraveler.id);
 
     loadPage();

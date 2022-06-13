@@ -23,11 +23,14 @@ class Trip {
   };
 
   getTripTimeline = trip => {
-    if (dayjs().isAfter(dayjs(this.date))) {
+    if (dayjs().isAfter(dayjs(this.date)) && this.status === "approved") {
       return (this.timeline = "past");
-    } else if (dayjs().isSame(dayjs(this.date))) {
+    } else if (dayjs().isSame(dayjs(this.date)) && this.status === "approved") {
       return (this.timeline = "present");
-    } else if (dayjs().isBefore(dayjs(this.date))) {
+    } else if (
+      dayjs().isBefore(dayjs(this.date)) &&
+      this.status === "approved"
+    ) {
       return (this.timeline = "upcoming");
     } else if (this.status === "pending") {
       return (this.timeline = "pending");
