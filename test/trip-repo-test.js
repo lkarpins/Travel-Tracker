@@ -1,8 +1,8 @@
 import chai from "chai";
 const expect = chai.expect;
 
-import { Trip } from "../src/trips";
-import { TripRepo } from "../src/trip-repo";
+import Trip from "../src/trips";
+import TripRepo from "../src/trip-repo";
 
 describe("TripRepo", () => {
   let trip1;

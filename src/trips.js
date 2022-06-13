@@ -34,4 +34,4 @@ class Trip {
     }
   };
 }
-export { Trip };
+export default Trip;

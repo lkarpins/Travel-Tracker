@@ -14,4 +14,4 @@ class Traveler {
   };
 }
 
-export { Traveler };
+export default Traveler;

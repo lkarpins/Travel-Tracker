@@ -1,4 +1,4 @@
-import { Trip } from "../src/trips";
+import Trip from "../src/trips";
 const dayjs = require("dayjs");
 
 class TripRepo {

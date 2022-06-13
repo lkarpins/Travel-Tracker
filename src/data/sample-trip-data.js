@@ -75,4 +75,4 @@ const trips = [
   }
 ];
 
-export { trips };
+export default trips;

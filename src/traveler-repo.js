@@ -1,4 +1,4 @@
-import { Traveler } from "../src/traveler";
+import Traveler from "../src/traveler";
 
 class TravelerRepo {
   constructor(data) {
@@ -19,4 +19,4 @@ class TravelerRepo {
   };
 }
 
-export { TravelerRepo };
+export default TravelerRepo;

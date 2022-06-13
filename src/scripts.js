@@ -1,11 +1,11 @@
 //Imports
 import "normalize.css";
 import "./css/styles.css";
-import { TravelerRepo } from "./traveler-repo";
+import TravelerRepo from "./traveler-repo";
 import TripRepo from "./trip-repo";
 import DestinationRepo from "./destination-repo";
-import { Traveler } from "../src/traveler";
-import { fetchData } from "./apiCalls";
+import Traveler from "../src/traveler";
+import fetchData from "./apiCalls";
 const dayjs = require("dayjs");
 
 //Query Selectors
@@ -35,10 +35,6 @@ const fetchApiCalls = userID => {
     loadPage();
   });
 };
-
-// const sortTrips = () => {
-//   tripRepo.filterTripsByTraveler(id);
-// };
 
 const loadPage = () => {
   welcomeTraveler();

@@ -1,4 +1,4 @@
-import { Destination } from "../src/destination";
+import Destination from "../src/destination";
 
 class DestinationRepo {
   constructor(data) {

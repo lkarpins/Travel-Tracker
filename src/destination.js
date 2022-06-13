@@ -10,4 +10,4 @@ class Destination {
     this.alt = destinationData.alt;
   }
 }
-export { Destination };
+export default Destination;

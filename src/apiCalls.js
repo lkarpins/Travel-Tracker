@@ -15,4 +15,4 @@ const fetchData = () => {
   ]);
 };
 
-export { fetchData };
+export default fetchData;
