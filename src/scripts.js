@@ -119,38 +119,30 @@ const createTripCard = (trip, destination) => {
   return currentTripCard;
 };
 
-// updateHydro.addEventListener("click", function onOpen() {
-//   hydroDialog.showModal();
-// });
-//
-//
-// hydroForm.addEventListener("change", function onSelect(e) {
-//   hydroPostData = {
-//     userID: user.id,
-//     date: getTodaysDate(),
-//     numOunces: parseInt(numOuncesInput.value)
-//   };
-// });
-//
-// hydroDialog.addEventListener("close", function onClose() {
-//   console.log(hydroPostData);
-//   fetch("http://localhost:3001/api/v1/hydration", {
-//     method: "POST",
-//     body: JSON.stringify(hydroPostData),
-//     headers: {
-//       "Content-Type": "application/json"
-//     }
-//   })
-//     .then(response => response.json())
-//     .then(data => {
-//       console.log(data);
-//       console.log(`Way to stay hydrated!`);
-//       fetchApiCalls(hydroPostData.userID);
-//     })
-//     .catch(err => {
-//       console.log(err);
-//     });
-// });
+const checkForValidInput = () => {
+  if (
+    !destinationsDropDown.value &&
+    bookingDateInput.value &&
+    durationInput.value &&
+    guestsInput.value
+  ) {
+    return false;
+  } else {
+    return true;
+  }
+};
+
+const calculateTripEstimate = () => {
+  if (checkForValidInput()) {
+    let estimatedTrip = {
+      id: parseInt(tripRepo.data.length + 1),
+      userID: parseInt(currentTraveler.id),
+      destinationID: parseInt(destinationsDropDown.value),
+      travelers: parseInt(guestsInput.value),
+      date: parseInt(bookingDateInput.value)
+    };
+  }
+};
 
 window.addEventListener("load", fetchApiCalls());
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)

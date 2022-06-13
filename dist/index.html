@@ -27,45 +27,37 @@
               >destinations:</label
             >
             <select
-              autocomplete="on"
-              class="destinations-dropdown input"
               id="destinationsDropDown"
-              name="destination"
               placeholder="destination"
               required
             >
             </select>
-            <label class="booking-date input" id="bookingDate"
-              >start date:</label
-            >
+            <label for="startDate">start date:</label>
             <input
-              class="booking-date-input input"
               id="bookingDateInput"
               type="date"
+              value="1"
               placeholder="dd/mm/yyyy"
-              min=""
-              max=""
               required
             />
-            <label class="duration input" id="duration">duration:</label>
+            <label for="duration">duration:</label>
             <input
               type="number"
-              name="days"
+              value="1"
               min="1"
-              value=""
               placeholder="duration"
               class="duration-input input"
               id="durationInput"
+              required
             />
-            <label class="guests input" id="guests">guests:</label>
+            <label for="guests">guests:</label>
             <input
               type="number"
               name="guests"
               min="1"
-              value=""
               placeholder="guests"
-              class="guests"
               id="guestsInput"
+              required
             />
             <button
               type="submit"
@@ -75,12 +67,7 @@
             >
               get estimate.
             </button>
-            <button
-              type="submit"
-              name="button"
-              class="book-button button"
-              id="bookButton"
-            >
+            <button type="submit" id="bookButton">
               book it.
             </button>
           </form>

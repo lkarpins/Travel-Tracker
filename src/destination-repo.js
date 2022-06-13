@@ -18,14 +18,5 @@ class DestinationRepo {
     });
     return chosenDestination;
   };
-
-  // getDestinationNames = () => {
-  //   const destinationNames = this.data.map(destination => {
-  //     return {
-  //       destination: destination.destination,
-  //       id: destination.desinationID
-  //     };
-  //   });
-  // };
 }
 export default DestinationRepo;
