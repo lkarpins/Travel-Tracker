@@ -12,6 +12,9 @@ const dayjs = require("dayjs");
 const welcomeMessage = document.querySelector("#welcomeMessage");
 const budgetUpdate = document.querySelector("#budgetUpdate");
 const destinationsDropDown = document.querySelector("#destinationsDropDown");
+const bookingDateInput = document.querySelector("#bookingDateInput");
+const durationInput = document.querySelector("#durationInput");
+const guestsInput = document.querySelector("#guestsInput");
 const tripCards = document.querySelector(".trip-cards");
 
 //Global Variables
@@ -29,7 +32,7 @@ const fetchApiCalls = userID => {
     travelerRepo = new TravelerRepo(travelerData);
     tripRepo = new TripRepo(tripData);
     destinationRepo = new DestinationRepo(destinationData);
-    currentTraveler = travelerRepo.findCurrentTraveler(2);
+    currentTraveler = travelerRepo.findCurrentTraveler(44);
     tripRepo.filterTripsByTraveler(currentTraveler.id);
 
     loadPage();
@@ -56,14 +59,12 @@ const calculateAmountSpentAnually = () => {
     }
     return acc;
   }, 0);
-  console.log(result);
   return result.toFixed(2);
 };
 
 const notifyAmountSpent = () => {
   let amountSpent = calculateAmountSpentAnually();
-  console.log(amountSpent);
-  budgetUpdate.innerHTML = `you've spent $${amountSpent} on travel this year`;
+  budgetUpdate.innerHTML = `you've spent $${amountSpent} on travel this year!`;
 };
 
 const insertDestinationOptions = () => {
@@ -118,8 +119,38 @@ const createTripCard = (trip, destination) => {
   return currentTripCard;
 };
 
-//iterate through all of the current users trips; while iterating, go to destination repo.findDestination(trip.desinationID) = to variable.   const totalCost = destination.estimatedFlightCostPerPerson
-//declare a variable, currentDestination; call destination.findDestination--pass in trip.destinationID
+// updateHydro.addEventListener("click", function onOpen() {
+//   hydroDialog.showModal();
+// });
+//
+//
+// hydroForm.addEventListener("change", function onSelect(e) {
+//   hydroPostData = {
+//     userID: user.id,
+//     date: getTodaysDate(),
+//     numOunces: parseInt(numOuncesInput.value)
+//   };
+// });
+//
+// hydroDialog.addEventListener("close", function onClose() {
+//   console.log(hydroPostData);
+//   fetch("http://localhost:3001/api/v1/hydration", {
+//     method: "POST",
+//     body: JSON.stringify(hydroPostData),
+//     headers: {
+//       "Content-Type": "application/json"
+//     }
+//   })
+//     .then(response => response.json())
+//     .then(data => {
+//       console.log(data);
+//       console.log(`Way to stay hydrated!`);
+//       fetchApiCalls(hydroPostData.userID);
+//     })
+//     .catch(err => {
+//       console.log(err);
+//     });
+// });
 
 window.addEventListener("load", fetchApiCalls());
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
