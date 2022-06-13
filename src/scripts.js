@@ -16,11 +16,17 @@ const bookingDateInput = document.querySelector("#bookingDateInput");
 const durationInput = document.querySelector("#durationInput");
 const guestsInput = document.querySelector("#guestsInput");
 const tripCards = document.querySelector(".trip-cards");
+const estimateButton = document.querySelector("#estimateButton");
+const submitButton = document.querySelector("#submitButton");
 
 //Global Variables
 let today = dayjs().format("YYYY/MM/DD");
 let travelerRepo, tripRepo, destinationRepo;
 let currentTraveler;
+
+//Event Listener
+// estimateButton.addEventListener("click", calculateTripEstimate);
+// submitButton.addEventListener("click");
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 
@@ -132,17 +138,7 @@ const checkForValidInput = () => {
   }
 };
 
-const calculateTripEstimate = () => {
-  if (checkForValidInput()) {
-    let estimatedTrip = {
-      id: parseInt(tripRepo.data.length + 1),
-      userID: parseInt(currentTraveler.id),
-      destinationID: parseInt(destinationsDropDown.value),
-      travelers: parseInt(guestsInput.value),
-      date: parseInt(bookingDateInput.value)
-    };
-  }
-};
+// const calculateTripEstimate = () => {};
 
 window.addEventListener("load", fetchApiCalls());
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
