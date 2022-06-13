@@ -11,4 +11,4 @@ const travelers = [
   }
 ];
 
-export { travelers };
+export default travelers;

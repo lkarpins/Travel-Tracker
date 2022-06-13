@@ -1,3 +1,5 @@
+const dayjs = require("dayjs");
+
 class Trip {
   constructor(tripData) {
     this.id = tripData.id;
@@ -8,11 +10,31 @@ class Trip {
     this.duration = tripData.duration;
     this.status = tripData.status;
     this.suggestedActivities = tripData.suggestedActivities;
-    this.allUserTrips = [];
-    this.pastTrips = [];
-    this.presentTrips = [];
-    this.upcomingTrips = [];
-    this.pendingtrips = [];
+    this.cost = 0;
+    this.timeline = "";
   }
+
+  calculateSingleTrip = destination => {
+    const tripTotal =
+      (destination.estimatedFlightCostPerPerson * this.travelers +
+        destination.estimatedLodgingCostPerDay * this.duration) *
+      1.1;
+    this.cost = tripTotal;
+  };
+
+  getTripTimeline = trip => {
+    if (dayjs().isAfter(dayjs(this.date)) && this.status === "approved") {
+      return (this.timeline = "past");
+    } else if (dayjs().isSame(dayjs(this.date)) && this.status === "approved") {
+      return (this.timeline = "present");
+    } else if (
+      dayjs().isBefore(dayjs(this.date)) &&
+      this.status === "approved"
+    ) {
+      return (this.timeline = "upcoming");
+    } else if (this.status === "pending") {
+      return (this.timeline = "pending");
+    }
+  };
 }
-export { Trip };
+export default Trip;

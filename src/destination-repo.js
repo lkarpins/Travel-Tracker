@@ -1,25 +1,31 @@
-import { Destination } from "../src/destination";
+import Destination from "../src/destination";
 
-class DesinationRepo {
+class DestinationRepo {
   constructor(data) {
-    this.data = data;
+    this.data = this.instantiateDestination(data);
   }
 
   instantiateDestination = data => {
-    const instantiatedDestination = (this.data = data.map(destination => {
+    const instantiatedDestination = data.map(destination => {
       return new Destination(destination);
     });
     return instantiatedDestination;
   };
+
   findDestination = id => {
     const chosenDestination = this.data.find(destination => {
       return destination.id === id;
     });
     return chosenDestination;
   };
-}
-export { DesinationRepo };
 
-// traveler0
-// trips 1
-// destinations2
+  getDestinationNames = () => {
+    const destinationNames = this.data.map(destination => {
+      return {
+        destination: destination.destination,
+        id: destination.desinationID
+      };
+    });
+  };
+}
+export default DestinationRepo;

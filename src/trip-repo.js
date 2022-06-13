@@ -1,13 +1,14 @@
+import Trip from "../src/trips";
 const dayjs = require("dayjs");
-import { Trip } from "../src/trip";
 
 class TripRepo {
   constructor(data) {
-    this.data = data;
+    this.data = this.instantiateTrips(data);
+    this.tripList = [];
   }
 
   instantiateTrips = data => {
-    const instantiatedTrips = (this.data = data.map(trip => {
+    const instantiatedTrips = data.map(trip => {
       return new Trip(trip);
     });
     return instantiatedTrips;
@@ -21,20 +22,14 @@ class TripRepo {
   };
 
   filterTripsByTraveler = id => {
-    const filteredTrips = this.data.filter(trip => {
-      return trip.userID === id;
-    });
-    return filteredTrips;
-  };
-
-  calculateSingleTrip = destinationData => {
-    const tripTotal =
-      destinationData.estimatedFlightCostPerPerson * this.travelers +
-      destinationData.estimatedLodgingCostPerDay *
-        this.duration *
-        this.travelers;
-    return tripTotal * 1.1;
+    return (this.tripList = this.data
+      .filter(trip => {
+        return trip.userID === id;
+      })
+      .sort((a, b) => {
+        return dayjs(b.date) - dayjs(a.date);
+      }));
   };
 }
 
-export { TripRepo };
+export default TripRepo;

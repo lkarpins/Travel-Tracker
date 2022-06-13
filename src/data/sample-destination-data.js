@@ -31,4 +31,4 @@ const destinations = [
   }
 ];
 
-export { destinations };
+export default destinations;
