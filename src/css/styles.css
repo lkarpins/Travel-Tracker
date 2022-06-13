@@ -33,6 +33,7 @@ h2 {
   display: flex;
   flex-flow: row wrap;
   gap: 1rem;
+  padding-top: 4rem;
   padding-bottom: 4rem;
 }
 .trip-card {

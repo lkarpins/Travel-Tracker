@@ -41,8 +41,8 @@ describe("TripRepo", () => {
     expect(tripRepo).to.be.an.instanceof(TripRepo);
   });
 
-  // it("should be able to instantiate new Trip", () => {
-  //   const chosenTraveler1 = tripRepo.instantiateTrips(trip);
-  //   expect(chosenTraveler1).to.be.an.instanceof(Trip);
+  // it("should be able to find trip by id", () => {
+  //   const foundTrip1 = tripRepo.findTrip(trip1.userID);
+  //   expect(foundTrip1.userID).to.equal();
   // });
 });

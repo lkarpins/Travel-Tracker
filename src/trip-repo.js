@@ -31,11 +31,18 @@ class TripRepo {
       }));
   };
 
-  // calculateAmountSpentAnually = id => {
-  //   console.log(this.tripList);
-  //   // const result = tripList.reduce((acc, trip) => {
-  //   //   if (trip.date >=  )
-  //   // })
-  // };
+  // calculateAmountSpentAnually = () => {
+  //   const userTrips = this.filterTripsByTraveler(this.data.id);
+  //   console.log(userTrips);
+  //   const result = userTrips.reduce((acc, trip) => {
+  //     console.log("******", trip);
+  //     if (trip.date.includes("2022")) {
+  //       acc += trip.cost;
+  //     }
+  //     return acc;
+  //   }, 0);
+  //   console.log(result);
+  //   return result;
 }
+
 export default TripRepo;

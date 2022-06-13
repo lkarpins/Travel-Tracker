@@ -3,10 +3,6 @@ class Traveler {
     this.id = travelerData.id;
     this.name = travelerData.name;
     this.travelerType = travelerData.travelerType;
-    this.pastTrips = [];
-    this.presentTrips = [];
-    this.upcomingTrips = [];
-    this.pendingtrips = [];
   }
   returnFirstName = () => {
     const firstName = this.name.split(" ");
