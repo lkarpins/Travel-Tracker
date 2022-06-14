@@ -5,7 +5,7 @@ import TravelerRepo from "./traveler-repo";
 import TripRepo from "./trip-repo";
 import DestinationRepo from "./destination-repo";
 import Traveler from "../src/traveler";
-import fetchData from "./apiCalls";
+import apiCalls from "./apiCalls";
 const dayjs = require("dayjs");
 
 //Query Selectors
@@ -16,27 +16,41 @@ const bookingDateInput = document.querySelector("#bookingDateInput");
 const durationInput = document.querySelector("#durationInput");
 const guestsInput = document.querySelector("#guestsInput");
 const tripCards = document.querySelector(".trip-cards");
+const estimateButton = document.querySelector("#estimateButton");
+const submitButton = document.querySelector("#submitButton");
 
 //Global Variables
 let today = dayjs().format("YYYY/MM/DD");
 let travelerRepo, tripRepo, destinationRepo;
 let currentTraveler;
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-
 const fetchApiCalls = userID => {
-  fetchData().then(data => {
+  apiCalls.fetchData().then(data => {
     let travelerData = data[0].travelers;
     let tripData = data[1].trips;
     let destinationData = data[2].destinations;
     travelerRepo = new TravelerRepo(travelerData);
     tripRepo = new TripRepo(tripData);
     destinationRepo = new DestinationRepo(destinationData);
-    currentTraveler = travelerRepo.findCurrentTraveler(44);
+    currentTraveler = travelerRepo.findCurrentTraveler(1);
     tripRepo.filterTripsByTraveler(currentTraveler.id);
 
     loadPage();
   });
+};
+
+const getTravelerInputData = form => {
+  console.log(form);
+  return {
+    id: parseInt(tripRepo.data.length + 1),
+    userID: parseInt(currentTraveler.id),
+    destinationID: parseInt(form[0].value),
+    travelers: parseInt(form[3].value),
+    date: dayjs(form[1].value).format("YYYY/MM/DD"),
+    duration: parseInt(form[2].value),
+    status: "pending",
+    suggestedActivities: []
+  };
 };
 
 const loadPage = () => {
@@ -69,7 +83,7 @@ const notifyAmountSpent = () => {
 
 const insertDestinationOptions = () => {
   destinationRepo.data.forEach(destination => {
-    destinationsDropDown.innerHTML += `<option value="${destination.destinationID}">${destination.destination}</option>`;
+    destinationsDropDown.innerHTML += `<option value="${destination.id}">${destination.destination}</option>`;
   });
   return;
 };
@@ -82,6 +96,22 @@ const displayTripCards = () => {
 
     tripCards.appendChild(createTripCard(trip, destination));
   });
+};
+
+const calculateEstimatedCost = () => {
+  event.preventDefault();
+  let newDestination = destinationRepo.findDestination(
+    parseInt(destinationsDropDown.value)
+  );
+  let newTripDuration = parseInt(formInputs[1].value);
+  let newTripTravelers = parseInt(formInputs[2].value);
+  let newTripCost =
+    parseInt(
+      newTripDestination.estimatedFlightCostPerPerson * newTripTravelers +
+        newTripDestination.estimatedLodgingCostPerDay * newTripDuration
+    ) * 1.1;
+  console.log(newTripCost);
+  return newTripCost;
 };
 
 const createTripCard = (trip, destination) => {
@@ -119,40 +149,17 @@ const createTripCard = (trip, destination) => {
   return currentTripCard;
 };
 
-// updateHydro.addEventListener("click", function onOpen() {
-//   hydroDialog.showModal();
-// });
-//
-//
-// hydroForm.addEventListener("change", function onSelect(e) {
-//   hydroPostData = {
-//     userID: user.id,
-//     date: getTodaysDate(),
-//     numOunces: parseInt(numOuncesInput.value)
-//   };
-// });
-//
-// hydroDialog.addEventListener("close", function onClose() {
-//   console.log(hydroPostData);
-//   fetch("http://localhost:3001/api/v1/hydration", {
-//     method: "POST",
-//     body: JSON.stringify(hydroPostData),
-//     headers: {
-//       "Content-Type": "application/json"
-//     }
-//   })
-//     .then(response => response.json())
-//     .then(data => {
-//       console.log(data);
-//       console.log(`Way to stay hydrated!`);
-//       fetchApiCalls(hydroPostData.userID);
-//     })
-//     .catch(err => {
-//       console.log(err);
-//     });
-// });
+const postData = event => {
+  event.preventDefault();
+  console.log(event);
+  const result = getTravelerInputData(event.target.form);
+  apiCalls.postTripInfo(result).then(() => {
+    tripCards.innerHTML = "";
+    fetchApiCalls(currentTraveler.id);
+  });
+};
 
+//Event Listener
+estimateButton.addEventListener("click", calculateEstimatedCost);
+submitButton.addEventListener("click", postData);
 window.addEventListener("load", fetchApiCalls());
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-
-// console.log("This is the JavaScript entry file - your code begins here.");

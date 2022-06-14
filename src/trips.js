@@ -25,7 +25,7 @@ class Trip {
   getTripTimeline = trip => {
     if (dayjs().isAfter(dayjs(this.date)) && this.status === "approved") {
       return (this.timeline = "past");
-    } else if (dayjs().isSame(dayjs(this.date)) && this.status === "approved") {
+    } else if (dayjs().isSame(dayjs(this.date))) {
       return (this.timeline = "present");
     } else if (
       dayjs().isBefore(dayjs(this.date)) &&

@@ -31,6 +31,16 @@ describe("TravelerRepo", () => {
     expect(travelerRepo).to.be.an.instanceof(TravelerRepo);
   });
 
+  it("should be able to store data for multiple travelers", () => {
+    expect(travelerRepo.data).to.deep.equal([traveler1, traveler2]);
+  });
+
+  it("should be able to mutate data to store multiple instances of Traveler", () => {
+    travelerRepo.instantiateTraveler();
+    expect(travelerRepo.data[0]).to.be.an.instanceOf(Traveler);
+    expect(travelerRepo.data[1]).to.be.an.instanceOf(Traveler);
+  });
+
   it("should be able to find traveler by id", () => {
     const chosenTraveler1 = travelerRepo.findCurrentTraveler(traveler1.id);
     expect(chosenTraveler1).to.be.an.instanceof(Traveler);

@@ -3,6 +3,7 @@ const expect = chai.expect;
 
 import Trip from "../src/trips";
 import TripRepo from "../src/trip-repo";
+import Destination from "../src/destination";
 
 describe("TripRepo", () => {
   let trip1;
@@ -41,8 +42,14 @@ describe("TripRepo", () => {
     expect(tripRepo).to.be.an.instanceof(TripRepo);
   });
 
-  // it("should be able to find trip by id", () => {
-  //   const foundTrip1 = tripRepo.findTrip(trip1.userID);
-  //   expect(foundTrip1.userID).to.equal();
-  // });
+  it.skip("should be able to store multiple trips for multiple travelers", () => {
+    expect(tripRepo.data).to.deep.equal([trip1, trip2]);
+  });
+
+  it.skip("should be able to find trip by id", () => {
+    const foundTrip1 = tripRepo.findTrip(trip1.id);
+    expect(foundTrip1).to.equal(trip1);
+    const foundTrip2 = tripRepo.findTrip(trip2.id);
+    expect(foundTrip2).to.equal(trip2);
+  });
 });
