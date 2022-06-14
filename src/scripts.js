@@ -32,7 +32,7 @@ const fetchApiCalls = userID => {
     travelerRepo = new TravelerRepo(travelerData);
     tripRepo = new TripRepo(tripData);
     destinationRepo = new DestinationRepo(destinationData);
-    currentTraveler = travelerRepo.findCurrentTraveler(44);
+    currentTraveler = travelerRepo.findCurrentTraveler(1);
     tripRepo.filterTripsByTraveler(currentTraveler.id);
 
     loadPage();
@@ -98,6 +98,22 @@ const displayTripCards = () => {
   });
 };
 
+const calculateEstimatedCost = () => {
+  event.preventDefault();
+  let newDestination = destinationRepo.findDestination(
+    parseInt(destinationsDropDown.value)
+  );
+  let newTripDuration = parseInt(formInputs[1].value);
+  let newTripTravelers = parseInt(formInputs[2].value);
+  let newTripCost =
+    parseInt(
+      newTripDestination.estimatedFlightCostPerPerson * newTripTravelers +
+        newTripDestination.estimatedLodgingCostPerDay * newTripDuration
+    ) * 1.1;
+  console.log(newTripCost);
+  return newTripCost;
+};
+
 const createTripCard = (trip, destination) => {
   let currentTripCard = document.createElement("article");
   currentTripCard.setAttribute("id", trip.id);
@@ -144,6 +160,6 @@ const postData = event => {
 };
 
 //Event Listener
-// estimateButton.addEventListener("click");
+estimateButton.addEventListener("click", calculateEstimatedCost);
 submitButton.addEventListener("click", postData);
 window.addEventListener("load", fetchApiCalls());

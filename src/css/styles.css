@@ -28,6 +28,9 @@ button {
   border-radius: 10rem;
   width: 8rem;
   padding: 2px;
+  background-color: navy;
+  color: white;
+  font-weight: bolder;
 }
 .book-trip {
   background: rgba(255, 255, 255, 0.6);
