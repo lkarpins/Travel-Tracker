@@ -32,7 +32,7 @@ const fetchApiCalls = userID => {
     travelerRepo = new TravelerRepo(travelerData);
     tripRepo = new TripRepo(tripData);
     destinationRepo = new DestinationRepo(destinationData);
-    currentTraveler = travelerRepo.findCurrentTraveler(12);
+    currentTraveler = travelerRepo.findCurrentTraveler(44);
     tripRepo.filterTripsByTraveler(currentTraveler.id);
 
     loadPage();

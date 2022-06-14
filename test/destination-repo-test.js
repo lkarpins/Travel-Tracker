@@ -46,14 +46,14 @@ describe("DestinationRepo", () => {
 
   it("should be able to mutate data to store multiple instances of Destination", () => {
     destinationRepo.instantiateDestination();
-    expect(destinationRepo.data[0]).to.be.an.instanceof(Destination);
-    expect(destinationRepo.data[1]).to.be.an.instanceof(Destination);
+    expect(destinationRepo.data[0]).to.be.an.instanceOf(Destination);
+    expect(destinationRepo.data[1]).to.be.an.instanceOf(Destination);
   });
 
   it("should be able to find destination by id", () => {
     let findDestination1 = destinationRepo.findDestination(destination1.id);
-    expect(findDestination1).to.equal(destination1);
+    expect(findDestination1).to.deep.equal(destination1);
     let findDestination2 = destinationRepo.findDestination(destination2.id);
-    expect(findDestination2).to.equal(destination2);
+    expect(findDestination2).to.deep.equal(destination2);
   });
 });

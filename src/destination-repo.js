@@ -2,14 +2,13 @@ import Destination from "../src/destination";
 
 class DestinationRepo {
   constructor(data) {
-    this.data = this.instantiateDestination(data);
+    this.data = data;
   }
 
   instantiateDestination = data => {
-    const instantiatedDestination = data.map(destination => {
+    return (this.data = this.data.map(destination => {
       return new Destination(destination);
-    });
-    return instantiatedDestination;
+    }));
   };
 
   findDestination = id => {
