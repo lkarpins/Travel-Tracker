@@ -19,11 +19,19 @@ const tripCards = document.querySelector(".trip-cards");
 const estimateButton = document.querySelector("#estimateButton");
 const submitButton = document.querySelector("#submitButton");
 const estimateMessage = document.querySelector("#estimateMessage");
+const userName = document.querySelector("#userName");
+const password = document.querySelector("#password");
+const submitPasswordButton = document.querySelector("#submitPasswordButton");
+const loginSection = document.querySelector("#loginSection");
+const mainSelection = document.querySelector(".main-section");
+const logoutButton = document.querySelector(".logout-button");
 
 //Global Variables
 let today = dayjs().format("YYYY/MM/DD");
 let travelerRepo, tripRepo, destinationRepo;
 let currentTraveler;
+let travelerInput;
+let userID;
 
 const fetchApiCalls = userID => {
   apiCalls.fetchData().then(data => {
@@ -33,8 +41,9 @@ const fetchApiCalls = userID => {
     travelerRepo = new TravelerRepo(travelerData);
     tripRepo = new TripRepo(tripData);
     destinationRepo = new DestinationRepo(destinationData);
-    currentTraveler = travelerRepo.findCurrentTraveler(40);
-    tripRepo.filterTripsByTraveler(currentTraveler.id);
+    destinationRepo.instantiateDestination();
+    currentTraveler = travelerRepo.findCurrentTraveler(userID);
+    tripRepo.filterTripsByTraveler(userID);
 
     loadPage();
   });
@@ -60,6 +69,37 @@ const loadPage = () => {
   displayTripCards();
   calculateAmountSpentAnually();
   notifyAmountSpent();
+};
+
+const toggleHidden = element => {
+  element.classList.toggle("hidden");
+};
+
+const verifyCredentials = () => {
+  event.preventDefault();
+  console.log("verify");
+  let user = userName.value.substring(0, 8);
+  userID = userName.value.substring(8);
+  if (
+    password.value === "travel" &&
+    user === "traveler" &&
+    userID <= 50 &&
+    userID >= 1
+  ) {
+    fetchApiCalls(userID);
+    toggleHidden(loginSection);
+    toggleHidden(mainSelection);
+    toggleHidden(logoutButton);
+  } else {
+    alert("Incorrect username or password! Try again!");
+  }
+};
+
+const returnLogin = () => {
+  event.preventDefault();
+  toggleHidden(loginSection);
+  toggleHidden(mainSelection);
+  toggleHidden(logoutButton);
 };
 
 const welcomeTraveler = () => {
@@ -96,13 +136,14 @@ const displayTripCards = () => {
     trip.getTripTimeline(trip);
 
     tripCards.appendChild(createTripCard(trip, destination));
+    console.log(tripRepo.tripList);
   });
   clearInput();
 };
 
 const displayTripEstimate = event => {
   let estimate = calculateEstimatedCost();
-  estimateMessage.innerHTML = `your estimated trip cost is $${estimate}! press book it to confirm!`;
+  estimateMessage.innerHTML = `your estimated trip cost is $${estimate}! press book it to confirm or choose a different trip!`;
 };
 
 const calculateEstimatedCost = form => {
@@ -177,4 +218,5 @@ const postData = event => {
 estimateButton.addEventListener("click", calculateEstimatedCost);
 estimateButton.addEventListener("click", displayTripEstimate);
 submitButton.addEventListener("click", postData);
-window.addEventListener("load", fetchApiCalls());
+submitPasswordButton.addEventListener("click", verifyCredentials);
+logoutButton.addEventListener("click", returnLogin);

@@ -2,14 +2,13 @@ import Traveler from "../src/traveler";
 
 class TravelerRepo {
   constructor(data) {
-    this.data = this.instantiateTraveler(data);
+    this.data = data;
   }
 
-  instantiateTraveler = data => {
-    const instantiatedTraveler = data.map(traveler => {
+  instantiateTraveler = () => {
+    return (this.data = this.data.map(traveler => {
       return new Traveler(traveler);
-    });
-    return instantiatedTraveler;
+    }));
   };
 
   findCurrentTraveler = id => {

@@ -13,65 +13,93 @@
   </head>
   <body>
     <main>
-      <header class="main nav--bar">
-        <nav>
-          <h1 class="main__menu-text">travel tracker.</h1>
-          <button class="main__button">logout</button>
-        </nav>
-        <h2 id="welcomeMessage"></h2>
-        <h2 id="budgetUpdate"></h2>
-        <h2 class="booking-heading">where to next?</h2>
-        <section class="book-trip hidden" id="bookTripBar">
-          <form>
-            <label class="destinations input" id="destinations"
-              >destinations:</label
-            >
-            <select
-              id="destinationsDropDown"
-              placeholder="destination"
-              required
-            >
-            </select>
-            <label for="startDate">start date:</label>
+      <nav>
+        <h1 class="main__menu-text">travel tracker.</h1>
+        <button class="logout-button hidden">logout</button>
+      </nav>
+      <section class="login-section" id="loginSection">
+        <p>Welcome Traveler!</p>
+        <form class="login-form">
+          <label for="user-name">
             <input
-              id="bookingDateInput"
-              type="date"
-              placeholder="dd/mm/yyyy"
-              required
+              class="user-name"
+              id="userName"
+              name="user-name"
+              type="text"
             />
-            <label for="duration">duration:</label>
+          </label>
+          <label for="password">
             <input
-              type="number"
-              min="1"
-              placeholder="duration"
-              id="durationInput"
-              required
+              class="password"
+              id="password"
+              name="password"
+              type="password"
             />
-            <label for="guests">guests:</label>
-            <input
-              type="number"
-              name="guests"
-              min="1"
-              placeholder="guests"
-              id="guestsInput"
-              required
-            />
-            <button
-              type="submit"
-              name="button"
-              class="estimate-button button"
-              id="estimateButton"
-            >
-              get estimate.
-            </button>
-            <button type="submit" id="submitButton">
-              book it.
-            </button>
-          </form>
-        </section>
-      </header>
-      <h2 id="estimateMessage">This is where it should populate</h2>
-      <section class="trip-cards"></section>
+          </label>
+        </form>
+        <button type="submit" class="submit-password" id="submitPasswordButton">
+          Submit
+        </button>
+      </section>
+      <section class="main-section hidden">
+        <header class="main nav--bar">
+          <section>
+            <h2 id="welcomeMessage"></h2>
+            <h2 id="budgetUpdate"></h2>
+            <h2 class="booking-heading">where to next?</h2>
+            <section class="book-trip" id="bookTripBar">
+              <form>
+                <label class="destinations input" id="destinations"
+                  >destinations:</label
+                >
+                <select
+                  id="destinationsDropDown"
+                  placeholder="destination"
+                  required
+                >
+                </select>
+                <label for="startDate">start date:</label>
+                <input
+                  id="bookingDateInput"
+                  type="date"
+                  placeholder="dd/mm/yyyy"
+                  required
+                />
+                <label for="duration">duration:</label>
+                <input
+                  type="number"
+                  min="1"
+                  placeholder="duration"
+                  id="durationInput"
+                  required
+                />
+                <label for="guests">guests:</label>
+                <input
+                  type="number"
+                  name="guests"
+                  min="1"
+                  placeholder="guests"
+                  id="guestsInput"
+                  required
+                />
+                <button
+                  type="submit"
+                  name="button"
+                  class="estimate-button button"
+                  id="estimateButton"
+                >
+                  get estimate.
+                </button>
+                <button type="submit" id="submitButton">
+                  book it.
+                </button>
+              </form>
+            </section>
+          </section>
+          <h2 id="estimateMessage"></h2>
+        </header>
+        <section class="trip-cards "></section>
+      </section>
     </main>
     <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
     <script src="bundle.js"></script>

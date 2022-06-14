@@ -42,11 +42,11 @@ describe("TripRepo", () => {
     expect(tripRepo).to.be.an.instanceof(TripRepo);
   });
 
-  it.skip("should be able to store multiple trips for multiple travelers", () => {
+  it("should be able to store multiple trips for multiple travelers", () => {
     expect(tripRepo.data).to.deep.equal([trip1, trip2]);
   });
 
-  it.skip("should be able to find trip by id", () => {
+  it("should be able to find trip by id", () => {
     const foundTrip1 = tripRepo.findTrip(trip1.id);
     expect(foundTrip1).to.equal(trip1);
     const foundTrip2 = tripRepo.findTrip(trip2.id);
