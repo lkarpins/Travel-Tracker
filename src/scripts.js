@@ -5,7 +5,7 @@ import TravelerRepo from "./traveler-repo";
 import TripRepo from "./trip-repo";
 import DestinationRepo from "./destination-repo";
 import Traveler from "../src/traveler";
-import fetchData from "./apiCalls";
+import apiCalls from "./apiCalls";
 const dayjs = require("dayjs");
 
 //Query Selectors
@@ -24,25 +24,35 @@ let today = dayjs().format("YYYY/MM/DD");
 let travelerRepo, tripRepo, destinationRepo;
 let currentTraveler;
 
-//Event Listener
-// estimateButton.addEventListener("click", calculateTripEstimate);
-// submitButton.addEventListener("click");
-
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 
 const fetchApiCalls = userID => {
-  fetchData().then(data => {
+  apiCalls.fetchData().then(data => {
     let travelerData = data[0].travelers;
     let tripData = data[1].trips;
     let destinationData = data[2].destinations;
     travelerRepo = new TravelerRepo(travelerData);
     tripRepo = new TripRepo(tripData);
     destinationRepo = new DestinationRepo(destinationData);
-    currentTraveler = travelerRepo.findCurrentTraveler(44);
+    currentTraveler = travelerRepo.findCurrentTraveler(12);
     tripRepo.filterTripsByTraveler(currentTraveler.id);
 
     loadPage();
   });
+};
+
+const getTravelerInputData = form => {
+  console.log(form);
+  return {
+    id: parseInt(tripRepo.data.length + 1),
+    userID: parseInt(currentTraveler.id),
+    destinationID: parseInt(form[0].value),
+    travelers: parseInt(form[3].value),
+    date: dayjs(form[1].value).format("YYYY/MM/DD"),
+    duration: parseInt(form[2].value),
+    status: "pending",
+    suggestedActivities: []
+  };
 };
 
 const loadPage = () => {
@@ -75,7 +85,7 @@ const notifyAmountSpent = () => {
 
 const insertDestinationOptions = () => {
   destinationRepo.data.forEach(destination => {
-    destinationsDropDown.innerHTML += `<option value="${destination.destinationID}">${destination.destination}</option>`;
+    destinationsDropDown.innerHTML += `<option value="${destination.id}">${destination.destination}</option>`;
   });
   return;
 };
@@ -125,21 +135,32 @@ const createTripCard = (trip, destination) => {
   return currentTripCard;
 };
 
-const checkForValidInput = () => {
-  if (
-    !destinationsDropDown.value &&
-    bookingDateInput.value &&
-    durationInput.value &&
-    guestsInput.value
-  ) {
-    return false;
-  } else {
-    return true;
-  }
+// const checkForValidInput = () => {
+//   if (
+//     destinationsDropDown.value &&
+//     bookingDateInput.value &&
+//     durationInput.value &&
+//     guestsInput.value
+//   ) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// };
+
+const postData = event => {
+  event.preventDefault();
+  console.log(event);
+  const result = getTravelerInputData(event.target.form);
+  apiCalls.postTripInfo(result).then(() => {
+    tripCards.innerHTML = "";
+    fetchApiCalls(currentTraveler.id);
+  });
 };
 
-// const calculateTripEstimate = () => {};
-
+//Event Listener
+// estimateButton.addEventListener("click");
+submitButton.addEventListener("click", postData);
 window.addEventListener("load", fetchApiCalls());
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 
