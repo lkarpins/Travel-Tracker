@@ -41,11 +41,12 @@ button {
 .trip-cards {
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
   gap: 1rem;
   padding-top: 4rem;
   padding-bottom: 4rem;
-  border-radius: 10rem;
 }
+
 .trip-card {
   display: grid;
   grid-template-rows: max-content 6rem;
@@ -73,13 +74,14 @@ button {
 .trip-details {
   display: flex;
   flex-direction: row;
+  padding-top: 3rem;
   justify-content: space-between;
   width: 100%;
 }
 
 .content {
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
   justify-content: space-evenly;
   gap: 1rem;
   padding: 1rem;
@@ -89,7 +91,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 1rem;
+  padding-top: 4rem;
 }
 
 .trip-card footer {

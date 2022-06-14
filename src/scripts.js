@@ -18,6 +18,7 @@ const guestsInput = document.querySelector("#guestsInput");
 const tripCards = document.querySelector(".trip-cards");
 const estimateButton = document.querySelector("#estimateButton");
 const submitButton = document.querySelector("#submitButton");
+const estimateMessage = document.querySelector("#estimateMessage");
 
 //Global Variables
 let today = dayjs().format("YYYY/MM/DD");
@@ -32,7 +33,7 @@ const fetchApiCalls = userID => {
     travelerRepo = new TravelerRepo(travelerData);
     tripRepo = new TripRepo(tripData);
     destinationRepo = new DestinationRepo(destinationData);
-    currentTraveler = travelerRepo.findCurrentTraveler(1);
+    currentTraveler = travelerRepo.findCurrentTraveler(40);
     tripRepo.filterTripsByTraveler(currentTraveler.id);
 
     loadPage();
@@ -68,7 +69,7 @@ const welcomeTraveler = () => {
 const calculateAmountSpentAnually = () => {
   const userTrips = tripRepo.filterTripsByTraveler(currentTraveler.id);
   const result = userTrips.reduce((acc, trip) => {
-    if (trip.date.includes("2022")) {
+    if (trip.date.includes("2022") && trip.status === "approved") {
       acc += trip.cost;
     }
     return acc;
@@ -96,22 +97,27 @@ const displayTripCards = () => {
 
     tripCards.appendChild(createTripCard(trip, destination));
   });
+  clearInput();
 };
 
-const calculateEstimatedCost = () => {
+const displayTripEstimate = event => {
+  let estimate = calculateEstimatedCost();
+  estimateMessage.innerHTML = `your estimated trip cost is $${estimate}! press book it to confirm!`;
+};
+
+const calculateEstimatedCost = form => {
   event.preventDefault();
-  let newDestination = destinationRepo.findDestination(
+  let newTripDestination = destinationRepo.findDestination(
     parseInt(destinationsDropDown.value)
   );
-  let newTripDuration = parseInt(formInputs[1].value);
-  let newTripTravelers = parseInt(formInputs[2].value);
+  let newTripDuration = durationInput.value;
+  let newTripTravelers = guestsInput.value;
   let newTripCost =
-    parseInt(
-      newTripDestination.estimatedFlightCostPerPerson * newTripTravelers +
-        newTripDestination.estimatedLodgingCostPerDay * newTripDuration
-    ) * 1.1;
-  console.log(newTripCost);
-  return newTripCost;
+    (newTripDestination.estimatedFlightCostPerPerson * newTripTravelers +
+      newTripDestination.estimatedLodgingCostPerDay * newTripDuration) *
+    1.1;
+  console.log(newTripCost.toFixed(2));
+  return newTripCost.toFixed(2);
 };
 
 const createTripCard = (trip, destination) => {
@@ -149,6 +155,14 @@ const createTripCard = (trip, destination) => {
   return currentTripCard;
 };
 
+const clearInput = () => {
+  destinationsDropDown.value = "";
+  durationInput.value = "";
+  guestsInput.value = "";
+  bookingDateInput.value = "";
+  estimateMessage.innerHTML = "";
+};
+
 const postData = event => {
   event.preventDefault();
   console.log(event);
@@ -161,5 +175,6 @@ const postData = event => {
 
 //Event Listener
 estimateButton.addEventListener("click", calculateEstimatedCost);
+estimateButton.addEventListener("click", displayTripEstimate);
 submitButton.addEventListener("click", postData);
 window.addEventListener("load", fetchApiCalls());
