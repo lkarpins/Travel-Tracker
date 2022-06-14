@@ -24,8 +24,6 @@ let today = dayjs().format("YYYY/MM/DD");
 let travelerRepo, tripRepo, destinationRepo;
 let currentTraveler;
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-
 const fetchApiCalls = userID => {
   apiCalls.fetchData().then(data => {
     let travelerData = data[0].travelers;
@@ -135,19 +133,6 @@ const createTripCard = (trip, destination) => {
   return currentTripCard;
 };
 
-// const checkForValidInput = () => {
-//   if (
-//     destinationsDropDown.value &&
-//     bookingDateInput.value &&
-//     durationInput.value &&
-//     guestsInput.value
-//   ) {
-//     return true;
-//   } else {
-//     return false;
-//   }
-// };
-
 const postData = event => {
   event.preventDefault();
   console.log(event);
@@ -162,6 +147,3 @@ const postData = event => {
 // estimateButton.addEventListener("click");
 submitButton.addEventListener("click", postData);
 window.addEventListener("load", fetchApiCalls());
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-
-// console.log("This is the JavaScript entry file - your code begins here.");
