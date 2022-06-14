@@ -33,7 +33,7 @@ const fetchApiCalls = userID => {
     travelerRepo = new TravelerRepo(travelerData);
     tripRepo = new TripRepo(tripData);
     destinationRepo = new DestinationRepo(destinationData);
-    currentTraveler = travelerRepo.findCurrentTraveler(44);
+    currentTraveler = travelerRepo.findCurrentTraveler(40);
     tripRepo.filterTripsByTraveler(currentTraveler.id);
 
     loadPage();
@@ -100,9 +100,9 @@ const displayTripCards = () => {
   clearInput();
 };
 
-const displayTripEstimate = () => {
+const displayTripEstimate = event => {
   let estimate = calculateEstimatedCost();
-  estimateMessage.innerHTML = `your estimated trip cost is $${estimate}! press book it. to confirm!`;
+  estimateMessage.innerHTML = `your estimated trip cost is $${estimate}! press book it to confirm!`;
 };
 
 const calculateEstimatedCost = form => {
@@ -116,6 +116,7 @@ const calculateEstimatedCost = form => {
     (newTripDestination.estimatedFlightCostPerPerson * newTripTravelers +
       newTripDestination.estimatedLodgingCostPerDay * newTripDuration) *
     1.1;
+  console.log(newTripCost.toFixed(2));
   return newTripCost.toFixed(2);
 };
 
@@ -159,6 +160,7 @@ const clearInput = () => {
   durationInput.value = "";
   guestsInput.value = "";
   bookingDateInput.value = "";
+  estimateMessage.innerHTML = "";
 };
 
 const postData = event => {
@@ -173,5 +175,6 @@ const postData = event => {
 
 //Event Listener
 estimateButton.addEventListener("click", calculateEstimatedCost);
+estimateButton.addEventListener("click", displayTripEstimate);
 submitButton.addEventListener("click", postData);
 window.addEventListener("load", fetchApiCalls());
