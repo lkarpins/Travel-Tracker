@@ -39,12 +39,14 @@ const fetchApiCalls = userID => {
     let tripData = data[1].trips;
     let destinationData = data[2].destinations;
     travelerRepo = new TravelerRepo(travelerData);
+    travelerRepo.instantiateTraveler();
     tripRepo = new TripRepo(tripData);
+    tripRepo.instantiateTrips();
     destinationRepo = new DestinationRepo(destinationData);
     destinationRepo.instantiateDestination();
-    currentTraveler = travelerRepo.findCurrentTraveler(userID);
-    tripRepo.filterTripsByTraveler(userID);
-
+    // currentTraveler = travelerRepo.findCurrentTraveler(userID);
+    tripRepo.filterTripsByTraveler(currentTraveler.id);
+    console.log(currentTraveler);
     loadPage();
   });
 };
@@ -75,6 +77,18 @@ const toggleHidden = element => {
   element.classList.toggle("hidden");
 };
 
+const fetchUserCall = userID => {
+  apiCalls.fetchUser(userID).then(data => {
+    currentTraveler = new Traveler(data[0]);
+    console.log(currentTraveler);
+    tripCards.innerHTML = "";
+    fetchApiCalls(userID);
+    toggleHidden(loginSection);
+    toggleHidden(mainSelection);
+    toggleHidden(logoutButton);
+  });
+};
+
 const verifyCredentials = () => {
   event.preventDefault();
   console.log("verify");
@@ -86,10 +100,8 @@ const verifyCredentials = () => {
     userID <= 50 &&
     userID >= 1
   ) {
-    fetchApiCalls(userID);
-    toggleHidden(loginSection);
-    toggleHidden(mainSelection);
-    toggleHidden(logoutButton);
+    fetchUserCall(userID);
+    return userID;
   } else {
     alert("Incorrect username or password! Try again!");
   }
@@ -210,6 +222,7 @@ const postData = event => {
   const result = getTravelerInputData(event.target.form);
   apiCalls.postTripInfo(result).then(() => {
     tripCards.innerHTML = "";
+    console.log(result);
     fetchApiCalls(currentTraveler.id);
   });
 };
