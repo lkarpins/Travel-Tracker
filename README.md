@@ -23,8 +23,9 @@ Go to http://localhost:8080/ in your browser.
 You will now be able to use travel tracker.
 
 # Technologies
-Project spec & rubric can be found [here](https://frontend.turing.edu/projects/travel-tracker.html). Below are images of the project for reference:  
+Project spec & rubric can be found [here](https://frontend.turing.edu/projects/travel-tracker.html). 
 
+https://user-images.githubusercontent.com/99596577/173881340-8fd86013-6cdc-44fa-b084-cf8ed5f0a96f.mp4
 
 
 ## Sources & Technologies Used:
