@@ -25,7 +25,9 @@ You will now be able to use travel tracker.
 # Technologies
 Project spec & rubric can be found [here](https://frontend.turing.edu/projects/travel-tracker.html). 
 
-https://user-images.githubusercontent.com/99596577/173881340-8fd86013-6cdc-44fa-b084-cf8ed5f0a96f.mp4
+https://user-images.githubusercontent.com/99596577/173884710-cd30190b-86aa-4d44-87ca-524d16205546.mp4
+
+
 
 
 ## Sources & Technologies Used:
