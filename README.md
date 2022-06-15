@@ -9,7 +9,7 @@ By: [Lidia Karpinski](www.linkedin.com/in/lidia-karpinski)
 * [Acknowledgements](https://github.com/lkarpins/Travel-Tracker/edit/main/README.md#acknowledgements)
 
 # Introduction
-travel tracker. is a web application designed for users to book and track past and future adventures.  After logging into user's profile, the display provides a thorough overview of the user's annual travel spendings, trip details, as well as gorgeous photos of explored desintations.  
+travel tracker. is a web application designed for users to book and track past and future adventures.  After logging into user's profile, the display provides a thorough overview of the user's annual travel spendings, trip details, as well as gorgeous photos of explored destinations.  
 
 # Set Up
 To set up travel tracker., clone down this repo by running `git clone git@github.com:lkarpins/Travel-Tracker.git`. Then run `npm install`. Once all dependencies are installed, run `npm start`.
