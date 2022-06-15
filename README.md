@@ -48,4 +48,4 @@ Project spec & rubric can be found [here](https://frontend.turing.edu/projects/t
 
 ## Acknowledgements
 
-I'd like to extend a special Thank You to my cohort and rock for their assistance and instruction throughout the duration of Mod2! 
+I'd like to extend a special Thank You to my cohort and rock for their support throughout the duration of Mod2! 
