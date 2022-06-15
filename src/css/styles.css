@@ -104,7 +104,6 @@ button {
 
 .content {
   display: flex;
-  /* flex-direction: row; */
   justify-content: space-evenly;
   gap: 1rem;
   padding: 1rem;

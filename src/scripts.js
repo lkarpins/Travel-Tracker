@@ -33,6 +33,7 @@ let currentTraveler;
 let travelerInput;
 let userID;
 
+//Functions
 const fetchApiCalls = userID => {
   apiCalls.fetchData().then(data => {
     let travelerData = data[0].travelers;
@@ -44,15 +45,12 @@ const fetchApiCalls = userID => {
     tripRepo.instantiateTrips();
     destinationRepo = new DestinationRepo(destinationData);
     destinationRepo.instantiateDestination();
-    // currentTraveler = travelerRepo.findCurrentTraveler(userID);
     tripRepo.filterTripsByTraveler(currentTraveler.id);
-    console.log(currentTraveler);
     loadPage();
   });
 };
 
 const getTravelerInputData = form => {
-  console.log(form);
   return {
     id: parseInt(tripRepo.data.length + 1),
     userID: parseInt(currentTraveler.id),
@@ -91,7 +89,6 @@ const fetchUserCall = userID => {
 
 const verifyCredentials = () => {
   event.preventDefault();
-  console.log("verify");
   let user = userName.value.substring(0, 8);
   userID = userName.value.substring(8);
   if (
@@ -169,7 +166,6 @@ const calculateEstimatedCost = form => {
     (newTripDestination.estimatedFlightCostPerPerson * newTripTravelers +
       newTripDestination.estimatedLodgingCostPerDay * newTripDuration) *
     1.1;
-  console.log(newTripCost.toFixed(2));
   return newTripCost.toFixed(2);
 };
 
@@ -218,16 +214,14 @@ const clearInput = () => {
 
 const postData = event => {
   event.preventDefault();
-  console.log(event);
   const result = getTravelerInputData(event.target.form);
   apiCalls.postTripInfo(result).then(() => {
     tripCards.innerHTML = "";
-    console.log(result);
     fetchApiCalls(currentTraveler.id);
   });
 };
 
-//Event Listener
+//Event Listeners
 estimateButton.addEventListener("click", calculateEstimatedCost);
 estimateButton.addEventListener("click", displayTripEstimate);
 submitButton.addEventListener("click", postData);
