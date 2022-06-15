@@ -3,15 +3,14 @@ const dayjs = require("dayjs");
 
 class TripRepo {
   constructor(data) {
-    this.data = this.instantiateTrips(data);
+    this.data = data;
     this.tripList = [];
   }
 
-  instantiateTrips = data => {
-    const instantiatedTrips = data.map(trip => {
+  instantiateTrips = () => {
+    return (this.data = this.data.map(trip => {
       return new Trip(trip);
-    });
-    return instantiatedTrips;
+    }));
   };
 
   findTrip = id => {
