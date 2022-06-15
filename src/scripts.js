@@ -33,6 +33,7 @@ let currentTraveler;
 let travelerInput;
 let userID;
 
+//Functions
 const fetchApiCalls = userID => {
   apiCalls.fetchData().then(data => {
     let travelerData = data[0].travelers;
@@ -220,7 +221,7 @@ const postData = event => {
   });
 };
 
-//Event Listener
+//Event Listeners
 estimateButton.addEventListener("click", calculateEstimatedCost);
 estimateButton.addEventListener("click", displayTripEstimate);
 submitButton.addEventListener("click", postData);
