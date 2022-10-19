@@ -56,6 +56,12 @@ input {
   justify-content: center;
 }
 
+.user-name-input,
+.password-input {
+  display: flex;
+  flex-direction: row;
+}
+
 .main__menu-text {
   padding-left: 2rem;
 }
