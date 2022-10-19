@@ -34,13 +34,19 @@ button {
   background-color: navy;
   color: white;
   font-weight: bolder;
-  height: 2.75rem;
+  height: 2.5rem;
+}
+
+input {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .login-form {
   display: flex;
   flex-direction: column;
-  padding-bottom: 3rem;
+  padding-bottom: 5rem;
   justify-content: center;
 }
 
