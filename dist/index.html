@@ -18,23 +18,30 @@
         <button class="logout-button hidden">logout</button>
       </nav>
       <section class="login-section" id="loginSection">
-        <p>Welcome Traveler!</p>
+        <h2>Welcome Traveler!</h2>
         <form class="login-form">
           <label for="user-name">
-            <input
-              class="user-name"
-              id="userName"
-              name="user-name"
-              type="text"
-            />
+            <div class="user-name-input">
+              <p>Username:</p>
+              <input
+                class="user-name"
+                id="userName"
+                name="user-name"
+                type="text"
+              />
+            </div>
           </label>
+          <br />
           <label for="password">
-            <input
-              class="password"
-              id="password"
-              name="password"
-              type="password"
-            />
+            <div class="password-input">
+              <p>Password:</p>
+              <input
+                class="password"
+                id="password"
+                name="password"
+                type="password"
+              />
+            </div>
           </label>
         </form>
         <button type="submit" class="submit-password" id="submitPasswordButton">
@@ -56,8 +63,7 @@
                   id="destinationsDropDown"
                   placeholder="destination"
                   required
-                >
-                </select>
+                ></select>
                 <label for="startDate">start date:</label>
                 <input
                   id="bookingDateInput"
@@ -90,15 +96,13 @@
                 >
                   get estimate.
                 </button>
-                <button type="submit" id="submitButton">
-                  book it.
-                </button>
+                <button type="submit" id="submitButton">book it.</button>
               </form>
             </section>
           </section>
           <h2 id="estimateMessage"></h2>
         </header>
-        <section class="trip-cards "></section>
+        <section class="trip-cards"></section>
       </section>
     </main>
     <script src="bundle.js"></script>
