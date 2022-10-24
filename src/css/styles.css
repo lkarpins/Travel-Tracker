@@ -29,7 +29,6 @@ h2 {
 
 button {
   width: 8rem;
-  padding: 2px;
   background-color: navy;
   color: white;
   font-weight: 700;
@@ -83,9 +82,9 @@ input {
 
 .book-trip {
   display: flex;
+  flex-direction: row;
   background: rgba(255, 255, 255, 0.6);
   padding: 2rem;
-  border-radius: 10rem;
 }
 
 .submit-password {
