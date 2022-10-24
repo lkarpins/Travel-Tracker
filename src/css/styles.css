@@ -28,13 +28,13 @@ h2 {
 }
 
 button {
-  border-radius: 10rem;
   width: 8rem;
   padding: 2px;
   background-color: navy;
   color: white;
   font-weight: bolder;
-  height: 2.5rem;
+  height: 700;
+  cursor: pointer;
 }
 
 input {
@@ -162,7 +162,7 @@ input {
 }
 
 .past-category {
-   background-color: #fbcbb9;
+  background-color: #fbcbb9;
    color: #333333;
 }
 
