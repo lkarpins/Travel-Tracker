@@ -32,9 +32,13 @@ button {
   padding: 2px;
   background-color: navy;
   color: white;
-  font-weight: bolder;
-  height: 700;
+  font-weight: 700;
+  height: 3rem;
   cursor: pointer;
+  box-shadow: 0px 2px 3px gray;
+}
+button:hover {
+  transform: scale(1.1);
 }
 
 input {
