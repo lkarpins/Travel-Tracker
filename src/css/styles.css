@@ -80,11 +80,17 @@ input {
   margin-right: 2rem;
 }
 
-.book-trip {
+.book-trip-container {
   display: flex;
   flex-direction: row;
   background: rgba(255, 255, 255, 0.6);
   padding: 2rem;
+}
+
+.booking-button-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 1rem;
 }
 
 .submit-password {
